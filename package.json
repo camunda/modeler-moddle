@@ -1,0 +1,46 @@
+{
+  "name": "modeling-moddle",
+  "version": "0.1.0",
+  "description": "Camunda Modeler moddle extensions",
+  "scripts": {
+    "all": "run-s lint test",
+    "lint": "eslint .",
+    "dev": "npm test -- --watch",
+    "test": "mocha -r ./test/expect --reporter=spec --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/camunda/modeling-moddle"
+  },
+  "keywords": [
+    "bpmn",
+    "moddle",
+    "bpmn20",
+    "camunda",
+    "modeling",
+    "meta-model"
+  ],
+  "author": {
+    "name": "Maciej Barelkowski",
+    "url": "https://github.com/barmac"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "bpmn-moddle": "^6.0.0",
+    "chai": "^4.1.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-bpmn-io": "^0.8.2",
+    "glob": "^7.1.2",
+    "jsondiffpatch": "^0.2.5",
+    "min-dash": "^3.0.0",
+    "mocha": "^4.0.1",
+    "npm-run-all": "^4.1.2",
+    "xsd-schema-validator": "^0.5.0"
+  }
+}

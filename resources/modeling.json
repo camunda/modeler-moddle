@@ -1,0 +1,31 @@
+{
+  "name": "Modeling",
+  "uri": "http://camunda.org/schema/1.0/modeling",
+  "prefix": "modeling",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "Definitions",
+      "isAbstract": true,
+      "extends": [
+        "bpmn:Definitions"
+      ],
+      "properties": [
+        {
+          "name": "executionPlatform",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "executionPlatformVersion",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ],
+  "enumerations": []
+}
