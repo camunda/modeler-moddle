@@ -6,7 +6,7 @@ This project defines the [Camunda Modeler](https://github.com/camunda/camunda-mo
 
 ## Usage
 
-Use it together with [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) to validate Camunda BPMN 2.0 extensions.
+Use it together with [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) to validate Camunda Modeler BPMN 2.0 extensions.
 
 ```javascript
 var BpmnModdle = require('bpmn-moddle');
