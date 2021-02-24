@@ -1,6 +1,6 @@
-# modeling-moddle
+# modeler-moddle
 
-[![Build Status](https://github.com/camunda/modeling-moddle/workflows/CI/badge.svg)](https://github.com/camunda/modeling-moddle/actions?query=workflow%3ACI)
+[![Build Status](https://github.com/camunda/modeler-moddle/workflows/CI/badge.svg)](https://github.com/camunda/modeler-moddle/actions?query=workflow%3ACI)
 
 This project defines the [Camunda Modeler](https://github.com/camunda/camunda-modeler) namespace extensions for BPMN 2.0 as a [moddle](https://github.com/bpmn-io/moddle) descriptor.
 
@@ -11,9 +11,9 @@ Use it together with [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) to va
 ```javascript
 var BpmnModdle = require('bpmn-moddle');
 
-var modelingModdle = require('modeling-moddle/resources/modeling');
+var modelerModdle = require('modeler-moddle/resources/modeler');
 
-var moddle = new BpmnModdle({ modeling: modelingModdle });
+var moddle = new BpmnModdle({ modeler: modelerModdle });
 
 var serviceTask = moddle.create('bpmn:Definitions', {
   executionPlatform: 'Camunda',

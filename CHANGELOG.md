@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to [modeling-moddle](https://github.com/camunda/modeling-moddle) are documented here. We use [semantic versioning](http://semver.org/) for releases.
+All notable changes to [modeler-moddle](https://github.com/camunda/modeler-moddle) are documented here. We use [semantic versioning](http://semver.org/) for releases.
 
 ## Unreleased
 

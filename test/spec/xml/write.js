@@ -35,7 +35,7 @@ describe('write', function() {
 
       var expectedXML =
         '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
-        'xmlns:modeling="http://camunda.org/schema/1.0/modeling" modeling:executionPlatform="Camunda" />';
+        'xmlns:modeler="http://camunda.org/schema/modeler/1.0" modeler:executionPlatform="Camunda" />';
 
       // when
       write(definitions, function(err, result) {

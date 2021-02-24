@@ -13,7 +13,7 @@ describe('read', function() {
     });
 
 
-    it('modeling:executionPlatform and modeling:executionPlatformVersion', function(done) {
+    it('modeler:executionPlatform and modeler:executionPlatformVersion', function(done) {
 
       // given
       var xml = readFile('test/fixtures/xml/definitions.xml');

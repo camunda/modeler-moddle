@@ -44,9 +44,9 @@ describe('import -> export roundtrip', function() {
   }
 
 
-  describe('should keep modeling attributes', function() {
+  describe('should keep modeler attributes', function() {
 
-    it('modeling:executionPlatform and modeling:executionPlatformVersion', validateExport('test/fixtures/xml/definitions.xml'));
+    it('modeler:executionPlatform and modeler:executionPlatformVersion', validateExport('test/fixtures/xml/definitions.xml'));
 
   });
 

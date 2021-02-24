@@ -1,5 +1,5 @@
 {
-  "name": "modeling-moddle",
+  "name": "modeler-moddle",
   "version": "0.1.0",
   "description": "Camunda Modeler moddle extensions",
   "scripts": {
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/camunda/modeling-moddle"
+    "url": "https://github.com/camunda/modeler-moddle"
   },
   "keywords": [
     "bpmn",
     "moddle",
     "bpmn20",
     "camunda",
-    "modeling",
+    "modeler",
     "meta-model"
   ],
   "author": {

@@ -12,11 +12,11 @@ module.exports.readFile = readFile;
 
 var BpmnModdle = require('bpmn-moddle');
 
-var modelingDescriptor = require('../resources/modeling.json');
+var modelerDescriptor = require('../resources/modeler.json');
 
 function createModdle() {
   return new BpmnModdle({
-    modeling: modelingDescriptor
+    modeler: modelerDescriptor
   });
 }
 
