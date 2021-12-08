@@ -16,9 +16,24 @@ var modelerModdle = require('modeler-moddle/resources/modeler');
 var moddle = new BpmnModdle({ modeler: modelerModdle });
 
 var serviceTask = moddle.create('bpmn:Definitions', {
-  executionPlatform: 'Camunda',
+  executionPlatform: 'Camunda Platform',
   executionPlatformVersion: '7.15.0'
 });
+```
+
+Once serialized, this exports the properties under the `http://camunda.org/schema/modeler/1.0` namespace:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions 
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_1" 
+    modeler:executionPlatform="Camunda Platform"
+    modeler:executionPlatformVersion="7.15.0">
+  
+  ...
+</bpmn:definitions>
 ```
 
 ## Building the Project
