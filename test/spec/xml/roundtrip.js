@@ -1,7 +1,11 @@
 'use strict';
 
+var validateBpmn = require('../../xml-helper').validateBpmn,
+    validateDmn = require('../../xml-helper').validateDmn;
+
 var readFile = require('../../helper').readFile,
-    createModdle = require('../../helper').createModdle;
+    createModdle = require('../../helper').createModdle,
+    createDmnModdle = require('../../helper').createDmnModdle;
 
 
 
@@ -14,40 +18,39 @@ describe('import -> export roundtrip', function() {
       .replace(/>\s+</g, '><');
   }
 
-  function validateExport(file) {
+  function validateExport(fileType, file) {
 
-    return function(done) {
+    return function() {
+
+      this.timeout(1000000);
 
       var xml = stripSpaces(readFile(file));
 
-      var moddle = createModdle();
+      var moddle = fileType === 'bpmn' ? createModdle() : createDmnModdle();
 
-      moddle.fromXML(xml, 'bpmn:Definitions', function(err, definitions) {
-        if (err) {
-          return done(err);
-        }
-
-        moddle.toXML(definitions, function(err, savedXML) {
-
-          if (err) {
-            return done(err);
-          }
-
-          savedXML = stripSpaces(savedXML);
+      return moddle.fromXML(xml)
+        .then(function(definitions) {
+          return moddle.toXML(definitions.rootElement);
+        })
+        .then(function(result) {
+          var savedXML = stripSpaces(result.xml);
 
           expect(savedXML).to.eql(xml);
 
-          done();
+          return fileType === 'bpmn' ? validateBpmn(savedXML) : validateDmn(savedXML);
         });
-      });
     };
   }
 
 
   describe('should keep modeler attributes', function() {
 
-    it('modeler:executionPlatform and modeler:executionPlatformVersion', validateExport('test/fixtures/xml/definitions.xml'));
+    it('modeler:executionPlatform and modeler:executionPlatformVersion (BPMN)', validateExport(
+      'bpmn', 'test/fixtures/xml/definitions.xml'));
 
+
+    it('modeler:executionPlatform and modeler:executionPlatformVersion (DMN)', validateExport(
+      'dmn', 'test/fixtures/xml/dmn.xml'));
   });
 
 });

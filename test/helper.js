@@ -21,3 +21,15 @@ function createModdle() {
 }
 
 module.exports.createModdle = createModdle;
+
+var DmnModdle = require('dmn-moddle');
+
+var dmnModelerDescriptor = require('../resources/dmn-modeler.json');
+
+function createDmnModdle() {
+  return new DmnModdle({
+    modeler: dmnModelerDescriptor
+  });
+}
+
+module.exports.createDmnModdle = createDmnModdle;

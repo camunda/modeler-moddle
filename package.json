@@ -36,8 +36,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "bpmn-moddle": "^6.0.0",
+    "bpmn-moddle": "^7.1.2",
     "chai": "^4.1.2",
+    "dmn-moddle": "^10.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-bpmn-io": "^0.8.2",
     "glob": "^7.1.2",
@@ -45,6 +46,6 @@
     "min-dash": "^3.0.0",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.2",
-    "xsd-schema-validator": "^0.5.0"
+    "xsd-schema-validator": "^0.7.0"
   }
 }
