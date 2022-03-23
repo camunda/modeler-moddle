@@ -1,34 +1,30 @@
 'use strict';
 
-var assign = require('min-dash').assign,
-    isFunction = require('min-dash').isFunction;
+var assign = require('min-dash').assign;
 
 var Helper = require('../../helper');
 
 
 describe('write', function() {
 
-  var moddle = Helper.createModdle();
-
-
-  function write(element, options, callback) {
-    if (isFunction(options)) {
-      callback = options;
+  function write(moddle, element, options) {
+    if (!options) {
       options = {};
     }
 
     // skip preamble for tests
     options = assign({ preamble: false }, options);
 
-    moddle.toXML(element, options, callback);
+    return moddle.toXML(element, options);
   }
 
 
   describe('should export types', function() {
 
-    it('Definitions#executionPlatform', function(done) {
+    it('Definitions#executionPlatform (BPMN)', function() {
 
       // given
+      var moddle = Helper.createModdle();
       var definitions = moddle.create('bpmn:Definitions', {
         executionPlatform: 'Camunda'
       });
@@ -38,13 +34,34 @@ describe('write', function() {
         'xmlns:modeler="http://camunda.org/schema/modeler/1.0" modeler:executionPlatform="Camunda" />';
 
       // when
-      write(definitions, function(err, result) {
+      return write(moddle, definitions)
+        .then(function(result) {
 
-        // then
-        expect(result).to.eql(expectedXML);
+          // then
+          expect(result.xml).to.eql(expectedXML);
+        });
+    });
 
-        done(err);
+
+    it('Definitions#executionPlatform (DMN)', function() {
+
+      // given
+      var moddle = Helper.createDmnModdle();
+      var definitions = moddle.create('dmn:Definitions', {
+        executionPlatform: 'Camunda'
       });
+
+      var expectedXML =
+        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" ' +
+        'xmlns:modeler="http://camunda.org/schema/modeler/1.0" modeler:executionPlatform="Camunda" />';
+
+      // when
+      return write(moddle, definitions)
+        .then(function(result) {
+
+          // then
+          expect(result.xml).to.eql(expectedXML);
+        });
     });
 
   });

@@ -2,38 +2,50 @@
 
 var SchemaValidator = require('xsd-schema-validator');
 
-var BPMN_XSD = 'test/fixtures/xsd/BPMN20.xsd';
+var BPMN_XSD = 'test/fixtures/xsd/bpmn/BPMN20.xsd';
+var DMN_XSD = 'test/fixtures/xsd/dmn/DMN13.xsd';
 
 var Helper = require('./helper');
 
 
-module.exports.fromFile = function(moddle, file, done) {
+module.exports.fromFile = function(moddle, file) {
   var fileContents = Helper.readFile(file);
 
-  moddle.fromXML(fileContents, 'bpmn:Definitions', done);
+  return moddle.fromXML(fileContents, 'bpmn:Definitions');
 };
 
-module.exports.toXML = function(element, opts, done) {
-  element.$model.toXML(element, opts, done);
+module.exports.fromDmnFile = function(moddle, file) {
+  var fileContents = Helper.readFile(file);
+
+  return moddle.fromXML(fileContents, 'dmn:Definitions');
 };
 
-module.exports.validate = function(err, xml, done) {
+module.exports.toXML = function(element, opts) {
+  return element.$model.toXML(element, opts);
+};
 
-  if (err) {
-    return done(err);
-  }
+module.exports.validateBpmn = function(xml) {
+  return validateWithSchema(BPMN_XSD, xml);
+};
 
+module.exports.validateDmn = function(xml) {
+  return validateWithSchema(DMN_XSD, xml);
+};
+
+function validateWithSchema(xsd, xml) {
   if (!xml) {
-    return done(new Error('XML is not defined'));
+    throw new Error('XML is not defined');
   }
 
-  SchemaValidator.validateXML(xml, BPMN_XSD, function(err, result) {
+  return new Promise(function(resolve, reject) {
+    SchemaValidator.validateXML(xml, xsd, function(err, result) {
 
-    if (err) {
-      return done(err);
-    }
+      if (err) {
+        return reject(err);
+      }
 
-    expect(result.valid).to.be.true;
-    done();
+      expect(result.valid).to.be.true;
+      resolve();
+    });
   });
-};
+}

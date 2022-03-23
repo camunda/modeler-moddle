@@ -1,0 +1,31 @@
+{
+  "name": "Modeler",
+  "uri": "http://camunda.org/schema/modeler/1.0",
+  "prefix": "modeler",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "Definitions",
+      "isAbstract": true,
+      "extends": [
+        "dmn:Definitions"
+      ],
+      "properties": [
+        {
+          "name": "executionPlatform",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "executionPlatformVersion",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ],
+  "enumerations": []
+}
