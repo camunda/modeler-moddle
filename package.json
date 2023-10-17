@@ -37,7 +37,7 @@
   "license": "MIT",
   "devDependencies": {
     "bpmn-moddle": "^8.0.1",
-    "chai": "^4.1.2",
+    "chai": "^4.3.10",
     "dmn-moddle": "^10.0.0",
     "eslint": "^8.51.0",
     "eslint-plugin-bpmn-io": "^1.0.0",
