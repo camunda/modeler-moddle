@@ -41,8 +41,6 @@
     "dmn-moddle": "^10.0.0",
     "eslint": "^8.51.0",
     "eslint-plugin-bpmn-io": "^1.0.0",
-    "glob": "^7.1.2",
-    "jsondiffpatch": "^0.7.2",
     "min-dash": "^4.1.1",
     "mocha": "^10.2.0",
     "npm-run-all": "^4.1.2",
